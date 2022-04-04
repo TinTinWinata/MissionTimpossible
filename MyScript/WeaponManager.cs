@@ -30,8 +30,8 @@ public class WeaponManager : MonoBehaviour
     {
         wait = true;
         myRig = GetComponent<CharacterRiggingScript>();
-        isHavingWeaponOne = true;
-        isHavingWeaponTwo = true;
+        isHavingWeaponOne = false;
+        isHavingWeaponTwo = false;
 
         unarmed();
     }

@@ -12,6 +12,7 @@ public class PressFScript : MonoBehaviour
     [SerializeField] AsunaScript asuna;
     private TMP_Text txtTakeAmmo;
     public static bool pressFOn;
+    
 
 
     // Start is called before the first frame update
@@ -34,6 +35,11 @@ public class PressFScript : MonoBehaviour
             pressF.SetActive(true);
         }
         else if(asuna.getOnPressF())
+        {
+            txtTakeAmmo.text = "Press F to Interact";
+            pressF.SetActive(true);
+        }
+        else if(RiffleAmmoScript.checkPlayerInRadius)
         {
             txtTakeAmmo.text = "Press F to Interact";
             pressF.SetActive(true);

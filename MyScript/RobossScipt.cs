@@ -256,6 +256,7 @@ public class RobossScipt : MonoBehaviour
     AudioSource audioSource;
 
     List<Vector2> aStarPath;
+    private bool death;
 
     // Start is called before the first frame update
     void Start()
@@ -263,24 +264,26 @@ public class RobossScipt : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         waiting = true;
         moving = false;
-        //Debug.Log("Corner-1 : " + corner1.position.x + " | " + corner1.position.z);
-        //Debug.Log("Corner-2 : " + corner2.position.x + " | " + corner2.position.z);
-        //Debug.Log("Corner-3 : " + corner3.position.x + " | " + corner3.position.z);
-        //Debug.Log("Corner-4 : " + corner4.position.x + " | " + corner4.position.z);
         bossStart = false;
 
         anim = GetComponent<Animator>();
         health = maxHealth;
         firingState = false;
+        death = false;
     }
 
     // Update is called once per frame
-    void Update() 
+    void Update()
     {
-        if(bossStart)
+        if (!death)
+        { 
+
+        if (bossStart)
         {
         if (health <= 0)
         {
+            anim.SetBool("Death", true);
+            death = true;
             VictoryScript.isVictory = true;
         }
 
@@ -297,11 +300,11 @@ public class RobossScipt : MonoBehaviour
             }
        if(moving)
             {
-                //Debug.Log("aStarPath Count : " + aStarPath.Count);
                 GoPath2(aStarPath);
             }
         }
 
+        }
     }
     public void Firing()
     {
@@ -315,22 +318,18 @@ public class RobossScipt : MonoBehaviour
     {
         waiting = false;
 
-        Debug.Log("Shooting State");
         transform.LookAt(mainCharacter);
         firingState = true;
         anim.SetBool("Shooting", true);
 
         yield return new WaitForSeconds(5);
-        Debug.Log("Moving State");
         firingState = false;
         anim.SetBool("Shooting", false);
         anim.SetBool("Running", true);
 
         float randomX = Random.RandomRange(corner3.position.x, corner2.position.x);
         float randomZ = Random.RandomRange(corner3.position.z, corner1.position.z);
-        Debug.Log("Random point : " + randomX + " | " + randomZ);
         aStarPath = SearchAStar(transform, randomX, randomZ);
-        Debug.Log("aStarPath Count : " + aStarPath.Count);
         moving = true;
 
         yield return new WaitForSeconds(5);

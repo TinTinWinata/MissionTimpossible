@@ -66,6 +66,11 @@ public class MovementScript : MonoBehaviour
             Vector3 velocity = new Vector3(0, 0, 0);
             velocity.y = ySpeed;
             cont.Move(velocity * Time.deltaTime);
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                anim.SetTrigger("Crouch");
+            }
         }
     }
 }
