@@ -94,10 +94,14 @@ public class EnemyScript : MonoBehaviour
             if(gatcha2)
             {
                 SpawnPistolAmmo();
+                    Debug.Log("Spawnning Pistol");
+
+
             }
-            else
+                else
             {
                 SpawnRiffleAmmo();
+                    Debug.Log("Spawnning Riffle");
             }
         }
             alreadyDropAmmmo = true;

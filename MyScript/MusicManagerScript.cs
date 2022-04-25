@@ -13,10 +13,12 @@ public class MusicManagerScript : MonoBehaviour
 
 
     static AudioSource audioSrc;
+    bool wait;
 
     // Start is called before the first frame update
     void Start()
     {
+        wait = true;
         playSound = null;
         audioSrc = GetComponent<AudioSource>();
     }
@@ -24,12 +26,27 @@ public class MusicManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!audioSrc.isPlaying)
+        {
+            if(wait)
+             StartCoroutine(playAmbient());
+        }
         if(playSound != null)
         {
             PlaySound(playSound);
             playSound = null;
         }
     }
+    IEnumerator playAmbient()
+    {
+        wait = false;
+
+        PlaySound("game");
+        yield return new WaitForSeconds(60);
+        wait = true;
+    }
+
+
 
     public void PlaySound(string str)
     {

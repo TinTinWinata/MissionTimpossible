@@ -188,7 +188,6 @@ public class MP4Script : MonoBehaviour
      }
     public void addAmmo(int ammo)
     {
-        Debug.Log("Take Ammo");
         extraAmmo += ammo;
     }
 

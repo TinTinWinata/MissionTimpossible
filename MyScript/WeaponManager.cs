@@ -24,7 +24,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] float changeWeaponTime = 1;
     [SerializeField] float offRigDelay = 1;
     private bool wait;
-    
+    public static bool nearAsuna;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,7 @@ public class WeaponManager : MonoBehaviour
         myRig = GetComponent<CharacterRiggingScript>();
         isHavingWeaponOne = false;
         isHavingWeaponTwo = false;
-
+        nearAsuna = false;
         unarmed();
     }
 
@@ -42,8 +43,8 @@ public class WeaponManager : MonoBehaviour
         getInputOne = Input.GetKeyDown(KeyCode.Alpha1);
         getInputTwo = Input.GetKeyDown(KeyCode.Alpha2);
         getInputThree = Input.GetKeyDown(KeyCode.Alpha3);
-
-
+        if(wait)
+        {
         if (getInputOne)
         {
             if(isHavingWeaponOne)
@@ -65,12 +66,14 @@ public class WeaponManager : MonoBehaviour
             }
             getInputTwo = false;
         }
-        if (getInputThree)
+        if (getInputThree || nearAsuna)
         {
             unarmed();
             getInputThree = false;
+                nearAsuna = false;
         }
 
+        }
         
     }
 

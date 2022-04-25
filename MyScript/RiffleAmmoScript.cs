@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class RiffleAmmoScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static bool checkPlayerInRadius;
+    bool checkPlayerInRadius;
     private int radius = 15;
     public static bool finished;
 
     [SerializeField] LayerMask person;
     [SerializeField] MP4Script mp4;
+    [SerializeField] PressFScript pressFScript;
     void Start()
     {
         radius = 5;
@@ -23,12 +24,17 @@ public class RiffleAmmoScript : MonoBehaviour
         checkPlayerInRadius = Physics.CheckSphere(transform.position, radius, person);
         if (checkPlayerInRadius)
         {
+            pressFScript.PressOn();
             if (Input.GetKeyDown(KeyCode.F))
             {
                 mp4.addAmmo(30);
                 checkPlayerInRadius = false;
                 Destroy(this.gameObject);
             }
+        }
+        else
+        {
+            pressFScript.PressOff();
         }
     }
 }

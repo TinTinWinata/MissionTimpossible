@@ -28,8 +28,7 @@ public class AsunaScript : MonoBehaviour
         checkPlayerInRadius = Physics.CheckSphere(transform.position, radius, person);
         if (checkPlayerInRadius)
         {
-            WeaponManager.getInputThree = true;
-
+            WeaponManager.nearAsuna = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if(!QuestScript.done && !QuestScript.onGoing)
@@ -47,7 +46,8 @@ public class AsunaScript : MonoBehaviour
                     QuestScript.questNumber += 1;
                     QuestScript.done = false;
                     VideoScript.playFilmIndex = QuestScript.questNumber;
-                    Debug.Log("Next Quest");
+                    MP4Script.addRiffleAmmo = 30;
+                    pistolScript.addPistolAmmo = 7;
                     // Ada quest dan kelar
                 }
                 else
@@ -72,6 +72,7 @@ public class AsunaScript : MonoBehaviour
     {
         return checkPlayerInRadius;
     }
+
     public bool getOnClassicDialogue()
     {
         return classicDialogue;

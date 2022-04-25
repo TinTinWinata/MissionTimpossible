@@ -49,7 +49,9 @@ public class RecoilScript : MonoBehaviour
     public void TriggerRecoil()
     {
         currentRecoilPosition += kickBackAmount;
+
         targetRotation += new Vector3(0,Random.Range(-recoilY, recoilY),0);
+
         aimScript.yAxis.Value += Random.RandomRange(minRecoil, maxRecoil);
     }
 }

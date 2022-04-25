@@ -53,7 +53,7 @@ public class TakeAmmoScript : MonoBehaviour
                     m4.addAmmo(30);
                     Destroy(hit.transform.gameObject);
                 }
-                txtTakeAmmo.text = "Press F To Take Pistol Ammo";
+                txtTakeAmmo.text = "Press F To Take Riffle Ammo";
             }
             else if (hit.collider.gameObject.tag == "Riffle")
             {

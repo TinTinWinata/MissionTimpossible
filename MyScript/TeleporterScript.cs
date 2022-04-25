@@ -28,13 +28,13 @@ public class TeleporterScript : MonoBehaviour
         {
 
             if (checkPlayerInRadius)
-        {
+         {
             if (Input.GetKey(KeyCode.F))
             {
                 playerScript.resetHealth();  
                     player.transform.position = MazeGeneratorScript.spawnVector;
             }
-        }
+         }
         }
 
     }

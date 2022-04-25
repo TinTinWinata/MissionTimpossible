@@ -19,6 +19,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField] LayerMask ground;
     private float jumpTimer = 1;
     [SerializeField] Animator rootAnim;
+    bool isGrounded;
 
 
     // Raycast
@@ -38,7 +39,14 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+        bool isMoving = cont.velocity.magnitude > 2f;
+        if(isMoving && isGrounded && !AudioManagerScript.isPlaying)
+        {
+            Debug.Log("Moving");
+            AudioManagerScript.playAudio = "move";
+        }
+
         if(GameRuleScript.inputEnabled)
         {
             float getInputVertical = Input.GetAxis("Vertical");
@@ -47,7 +55,7 @@ public class MovementScript : MonoBehaviour
             float getInputHorizontal = Input.GetAxis("Horizontal");
             anim.SetFloat("Velocity X", getInputHorizontal);
 
-            bool isGrounded = Physics.CheckSphere(transform.position, 2, ground);
+            isGrounded = Physics.CheckSphere(transform.position, 2, ground);
 
             ySpeed += gravity * Time.deltaTime;
             if(isGrounded && ySpeed < 0)

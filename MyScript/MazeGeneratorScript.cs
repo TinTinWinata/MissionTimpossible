@@ -132,8 +132,6 @@ public class MazeGeneratorScript : MonoBehaviour
 			//Debug.Log("WOW");
 			return;
 		}
-        //Debug.Log("Left Node : " + parent.leftNode.center.x + " " + parent.leftNode.center.y);
-        //Debug.Log("Right Node : " + parent.rightNode.center.x + " " + parent.rightNode.center.y);
 
         for (int i = (int) parent.leftNode.center.x; i <= parent.rightNode.center.x; i++)
 		{
@@ -182,7 +180,7 @@ public class MazeGeneratorScript : MonoBehaviour
 		//Debug.Log(boxSize.x + " " + boxSize.y + " " + boxSize.z);
         field = new bool[size * 2, size * 2];
         Node root = new Node(0,0, size, size);
-        RandomGenerator(root, 8);
+        RandomGenerator(root, 6);
         MakePath(root);
 		MakeGetOut(root);
 
@@ -199,9 +197,9 @@ public class MazeGeneratorScript : MonoBehaviour
 
 		Node mostRightChild = GetMostRight(root);
 
-        for (int i = (int)mostRightChild.x; i < size; i++)
+        for (int i = (int)mostRightChild.x	; i < size; i++)
         {
-            field[(int)mostRightChild.z, i] = false;
+            field[(int)mostRightChild.z, i] = true;
         }
     }
 

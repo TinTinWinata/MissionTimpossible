@@ -33,6 +33,10 @@ public class TimerScript : MonoBehaviour
     void Update()
     {
         //Debug.Log(countDeathEnemy);
+        if(currTime <= 0)
+        {
+            DeathScript.isDead = true;
+        }
 
         if (countDeathEnemy >= totalEnemy)
         {

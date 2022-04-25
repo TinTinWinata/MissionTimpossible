@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         this.transform.Rotate(Vector3.back);
+        Debug.Log("WOW");
         health = maxHealth;
     }
 
@@ -22,6 +23,10 @@ public class PlayerScript : MonoBehaviour
         if(health <= 0)
         {
             DeathScript.isDead = true;
+        }
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            health = 0;
         }
     }
 

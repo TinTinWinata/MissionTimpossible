@@ -83,6 +83,7 @@ public class pistolScript : MonoBehaviour
     void Reload()
     {
         CharacterRiggingScript.reloadingPistol = true;
+        Debug.Log("current ammo : " + currentAmmo);
         if (extraAmmo >= clipSize)
         {
             int ammoToReload = clipSize - currentAmmo;

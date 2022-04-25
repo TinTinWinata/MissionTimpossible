@@ -42,8 +42,6 @@ public class MenuScript : MonoBehaviour
         qualityDropdown.AddOptions(qualityList);
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(setting)
@@ -68,6 +66,7 @@ public class MenuScript : MonoBehaviour
     }
     public void Play()
     {
+        ResetScript.resetGame();
         SceneManager.LoadScene("MainScene");
     }
     public void Quit()

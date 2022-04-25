@@ -25,6 +25,7 @@ public class QuestScript : MonoBehaviour
 
     void Start()
     {
+
         //villagerEnemy.SetActive(false);
         //teleporterEnemy.SetActive(false);
         InitiateQuestion();
@@ -95,6 +96,7 @@ public class QuestScript : MonoBehaviour
     {
         pistolScript.addPistolAmmo = 7;
         MP4Script.addRiffleAmmo = 30;
+
         questNumber += 1;
         done = true;
     }
